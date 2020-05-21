@@ -15,12 +15,12 @@ Most of this was just lifted from previous work by [Chris Double](https://bluish
   
 ## Deploy
 
-These commands will build erlang for android arm 32-bit and place the distribution in <my/src/dir>. From here, you can use `adb` to push it to your device. Note that historically, `adb` has had issues with symlinks so the `epmd` symlink is removed and recreated on the device.
+These commands will build erlang for android arm 32-bit and place the distribution in `<my/src/dir>`. From here, you can use `adb` to push it to your device. Note that historically, `adb` has had issues with symlinks so the `epmd` symlink is removed and recreated on the device.
 
     cd <my/src/dir>
     rm erlang/bin/epmd
     adb push erlang /data/local/tmp
-    adb shell ln -s /data/local/tmp/erlang/erts-6.4.1/bin/epmd /data/local/tmp/erlang/bin/epmd
+    adb shell ln -s /data/local/tmp/erlang/erts-11.0/bin/epmd /data/local/tmp/erlang/bin/epmd
   
 ## Run
 
