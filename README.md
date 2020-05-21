@@ -5,6 +5,8 @@ A dockerfile for building an erlang 23.0 distribution suitable for running on 32
 The dockerfile also builds a version of OpenSSL suitable for Android, enabling the crypto and ssl applications.
 Distribution appears to work.
 
+Most of this was just lifted from previous work by [Chris Double](https://bluishcoder.co.nz/2015/06/21/building-erlang-for-android.html).
+
 ## Build
 
     docker build -t <tag> .
