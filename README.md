@@ -1,9 +1,8 @@
 # erlang-android-arm
 
-A dockerfile for building an erlang 23.0 distribution suitable for running on 32-bit android.
+A dockerfile for building an erlang 23.0 distribution suitable for running on 64-bit android.
 
 The dockerfile also builds a version of OpenSSL suitable for Android, enabling the crypto and ssl applications.
-Distribution appears to work.
 
 ## Build
 
@@ -13,7 +12,7 @@ Distribution appears to work.
   
 ## Deploy
 
-These commands will build erlang for android arm 32-bit and place the distribution in <my/src/dir>. From here, you can use `adb` to push it to your device. Note that historically, `adb` has had issues with symlinks so the `epmd` symlink is removed and recreated on the device.
+These commands will build erlang for android arm 64-bit and place the distribution in <my/src/dir>. From here, you can use `adb` to push it to your device. Note that historically, `adb` has had issues with symlinks so the `epmd` symlink is removed and recreated on the device.
 
   cd <my/src/dir>
   rm erlang/bin/epmd
@@ -67,4 +66,4 @@ These commands will build erlang for android arm 32-bit and place the distributi
   
 ## Caveats
 
-Tested on a single crappy android device and nowhere else.
+The 64-bit branch is completely untested due to the author not having an available device.
