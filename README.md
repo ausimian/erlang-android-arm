@@ -18,7 +18,7 @@ These commands will build erlang for android arm 32-bit and place the distributi
     cd <my/src/dir>
     rm erlang/bin/epmd
     adb push erlang /data/local/tmp
-    adb shell ln -s /data/local/tmp/erlang/erts-6.4.1/bin/epmd /data/local/tmp/erlang/bin/epmd
+    adb shell ln -s /data/local/tmp/erlang/erts-11.0/bin/epmd /data/local/tmp/erlang/bin/epmd
   
 ## Run
 
