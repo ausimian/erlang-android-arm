@@ -25,21 +25,21 @@ RUN curl -L -s -o otp.tar.gz https://github.com/erlang/otp/releases/download/OTP
     tar xzf otp.tar.gz &&\
     rm otp.tar.gz
 
-ENV NDK_ABI_PLAT=androideabi16 NDK_PLAT=android-16 NDK_ROOT=/build/android-ndk-r21b
+ENV NDK_ABI_PLAT=android21 NDK_PLAT=android-21 NDK_ROOT=/build/android-ndk-r21b
 ENV ANDROID_NDK_HOME=/build/android-ndk-r21b
 ENV PATH="$NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin:$NDK_ROOT/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:${PATH}"
 
 RUN cd openssl-OpenSSL_1_1_1g &&\
-    ./Configure --prefix=/build/openssl/build android-arm -D__ANDROID_API__=16 &&\
+    ./Configure --prefix=/build/openssl/build android-arm64 -D__ANDROID_API__=21 &&\
     make -j &&\
     make install_sw
 
-COPY erl-xcomp-arm-android-with-ssl.conf /build/otp/xcomp
+COPY erl-xcomp-arm64-android-with-ssl.conf /build/otp/xcomp
 
 WORKDIR /build/otp
 
 RUN ./otp_build autoconf
-RUN ./otp_build configure --xcomp-conf=xcomp/erl-xcomp-arm-android-with-ssl.conf
+RUN ./otp_build configure --xcomp-conf=xcomp/erl-xcomp-arm64-android-with-ssl.conf
 RUN MAKEFLAGS=-j ./otp_build boot -a
 
 ENTRYPOINT ./otp_build release -a /otp/erlang && cd /otp/erlang && ./Install -cross -minimal /data/local/tmp/erlang
